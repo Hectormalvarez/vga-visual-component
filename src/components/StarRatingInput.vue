@@ -29,6 +29,13 @@ export default {
       default: 5,
     },
   },
+  inject: {
+    starRating: {
+      default() {
+        console.error('StarRatingInput need to be a child of StartRating');
+      },
+    },
+  },
   data: () => ({
     rating: 0,
   }),

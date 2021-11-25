@@ -1,29 +1,34 @@
 <template>
   <div id="app">
     <MaterialCardBox
-        header="Material Card Header"
-        sub-header="Card Sub Header"
-        show-media
-        show-actions
-        img-src="https://picsum.photos/300/200"
-        :main-text="`
-        The path of the righteous man is beset on all sides by the
-          iniquities of the selfish and the tyranny of evil men.`"
+      header="Material Card Header"
+      sub-header="Card Sub Header"
+      show-media
+      show-actions
+      img-src="https://picsum.photos/300/200"
     >
-        <StarRatingInput />
+      <p>
+        <StarRating ref="starRating" />
+      </p>
+      <p>
+        The path of the rightous man is beset on all side by the iniquities of
+        the selfish and the tyranny of evil men.
+      </p>
       <template v-slot:action>
         <MaterialButton
-            background-color="#027be3"
-            text-color="#fff"
+          background-color="#027be3"
+          text-color="#fff"
+          @click="resetVote"
         >
-          Action 1
+          Reset
         </MaterialButton>
-        <MaterialButton
-            background-color="#26a69a"
-            text-color="#fff"
-            is-flat
+        <MaterialButton 
+        background-color="#26a69a" 
+        text-color="#fff"
+        is-flat 
+        @click="forceVote"
         >
-          Action 2
+          Rate 5 Stars
         </MaterialButton>
       </template>
     </MaterialCardBox>
@@ -31,16 +36,25 @@
 </template>
 
 <script>
-import MaterialCardBox from './components/MaterialCardBox.vue';
-import MaterialButton from './components/MaterialButton.vue';
-import StarRatingInput from './components/StarRatingInput';
+import MaterialCardBox from "./components/MaterialCardBox.vue";
+import MaterialButton from "./components/MaterialButton.vue";
+import StarRating from "./components/StarRating";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
+    StarRating,
     MaterialButton,
     MaterialCardBox,
-    StarRatingInput,
+  },
+  methods: {
+    resetVote() {
+      this.$refs.starRating.vote(0);
+      this.$refs.starRating.voted = false;
+    },
+    forceVote() {
+      this.$refs.starRating.vote(5);
+    },
   },
 };
 </script>

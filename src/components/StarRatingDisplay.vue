@@ -17,7 +17,7 @@
         v-if="votes"
         class="votes"
     >
-      ({{ votes }}
+      ({{ votes }})
     </span>
   </div>
 </template>
