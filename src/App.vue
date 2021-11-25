@@ -1,29 +1,51 @@
 <template>
-  <div id='app'>
-    <MaterialCardBox >
-    <template v-slot:header>
-      <strong>Card Title</strong><br>
-      <span>Card Sub-Title</span>
-    </template>
-    <template v-slot:media>
-      <img src="https://via.placeholder.com/350x150" />
-    </template>
-    <p>Main Section</p>
-    <template v-slot:action>
-      <button>Action Button</button>
-      <button>Action Button</button>
-    </template>
+  <div id="app">
+    <MaterialCardBox
+        header="Material Card Header"
+        sub-header="Card Sub Header"
+        show-media
+        show-actions
+        img-src="https://picsum.photos/300/200"
+        :main-text="`
+        The path of the righteous man is beset on all sides by the
+          iniquities of the selfish and the tyranny of evil men.`"
+    >
+        <StarRatingInput />
+      <template v-slot:action>
+        <MaterialButton
+            background-color="#027be3"
+            text-color="#fff"
+        >
+          Action 1
+        </MaterialButton>
+        <MaterialButton
+            background-color="#26a69a"
+            text-color="#fff"
+            is-flat
+        >
+          Action 2
+        </MaterialButton>
+      </template>
     </MaterialCardBox>
   </div>
 </template>
 
 <script>
 import MaterialCardBox from './components/MaterialCardBox.vue';
+import MaterialButton from './components/MaterialButton.vue';
+import StarRatingInput from './components/StarRatingInput';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    MaterialCardBox
-  }
-}
+    MaterialButton,
+    MaterialCardBox,
+    StarRatingInput,
+  },
+};
 </script>
+<style>
+body {
+  font-size: 14px;
+}
+</style>
