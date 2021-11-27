@@ -20,24 +20,17 @@
 </template>
 
 <script>
+import StarRatingBaseMixin from '../mixins/StarRatingBase';
+import StarRatingChildMixin from '../mixins/starRatingChild';
+
 export default {
   name: 'StarRatingInput',
-  props: {
-    maxRating: {
-      type: Number,
-      required: false,
-      default: 5,
-    },
-  },
-  inject: {
-    starRating: {
-      default() {
-        console.error('StarRatingInput need to be a child of StartRating');
-      },
-    },
-  },
+  mixins: [
+    StarRatingBaseMixin,
+      StarRatingChildMixin,
+  ],
   data: () => ({
-    rating: 0,
+    rank: 0,
   }),
   methods: {
     updateRating(value) {
